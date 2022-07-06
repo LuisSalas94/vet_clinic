@@ -14,7 +14,7 @@ INSERT INTO animals (name, date_of_birth, escape_attempts, neutered, weight_kg) 
 INSERT INTO animals (name, date_of_birth, escape_attempts, neutered, weight_kg) VALUES ('Ditto', '2022-04-14', 4, TRUE, 22);
 
 /*
-nsert the following data into the owners table:
+Insert the following data into the owners table:
   Sam Smith 34 years old.
   Jennifer Orwell 19 years old.
   Bob 45 years old.
