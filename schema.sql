@@ -5,7 +5,8 @@ CREATE TABLE animals (
     date_of_birth DATE,
     escape_attempts INT,
     neutered BOOLEAN,
-    weight_kg DECIMAL
+    weight_kg DECIMAL,
+    PRIMARY KEY(id);
 );
 
 /*Add a column species of type string to your animals table. Modify your schema.sql file.*/
@@ -50,3 +51,38 @@ ADD species_id INT REFERENCES species(id);
 
 ALTER TABLE animals
 ADD owner_id INT REFERENCES owners(id);
+
+/*
+Create a table named vets with the following columns:
+ id: integer (set it as autoincremented PRIMARY KEY)
+ name: string
+ age: integer
+ date_of_graduation: date
+*/
+CREATE TABLE vets(
+    id INT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR(50),
+    age INT,
+    date_of_graduation DATE,
+    PRIMARY KEY(id)
+);
+
+/*
+There is a many-to-many relationship between the tables species and vets: a vet can specialize in multiple species, and a species can have multiple vets specialized in it. Create a "join table" called specializations to handle this relationship.
+*/
+CREATE TABLE specializations(
+    vets_id INT REFERENCES vets(id),
+    species_id INT REFERENCES species(id),
+    PRIMARY KEY(vets_id, species_id )
+);
+
+/*
+There is a many-to-many relationship between the tables animals and vets: an animal can visit multiple vets and one vet can be visited by multiple animals. Create a "join table" called visits to handle this relationship, it should also keep track of the date of the visit.
+*/
+CREATE TABLE visits(
+    id INT GENERATED ALWAYS AS IDENTITY,
+    vets_id INT REFERENCES vets(id),
+    animals_id INT REFERENCES animals(id),
+    visit_date DATE,
+    PRIMARY KEY(id, vets_id, animals_id)
+);
