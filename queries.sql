@@ -107,7 +107,9 @@ SELECT full_name, name FROM animals INNER JOIN owners ON animals.owner_id = owne
 
 SELECT full_name FROM owners INNER JOIN animals ON owners.id = animals.owner_id GROUP BY owners.id ORDER BY COUNT(animals) DESC LIMIT 1;
 
-
+/*Vet clinic database: add "join table" for visits
+Write queries to answer the following:
+*/
 /*Who was the last animal seen by William Tatcher?*/
 SELECT animals.name, visit_date FROM animals INNER JOIN visits ON animals.id = visits.animals_id INNER JOIN vets ON visits.vets_id = vets.id WHERE vets.name = 'William Tatcher' ORDER BY visits.visit_date DESC LIMIT 1;
 
