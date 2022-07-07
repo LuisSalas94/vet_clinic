@@ -7,7 +7,6 @@ CREATE TABLE animals (
     neutered BOOLEAN,
     weight_kg DECIMAL,
     PRIMARY KEY(id);
-    
 );
 
 /*Add a column species of type string to your animals table. Modify your schema.sql file.*/
